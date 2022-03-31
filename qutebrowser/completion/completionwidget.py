@@ -273,7 +273,7 @@ class CompletionView(QTreeView):
                 idx = self.model().first_item()
                 self.scrollTo(idx.parent())
                 return idx
-            elif idx.isValid() and idx.child(0, 0).isValid():
+            elif idx.isValid() and hasattr(idx, 'child') and idx.child(0, 0).isValid():
                 # scroll to ensure the category is visible
                 self.scrollTo(idx)
                 return idx.child(0, 0)
